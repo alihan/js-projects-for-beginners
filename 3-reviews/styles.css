@@ -82,6 +82,12 @@ h4 {
   cursor: pointer;
   margin-bottom: 1rem;
 }
+#arrow {
+    color: rgba(184, 117, 117, 0.8);
+    font-size: 2rem;
+    font-weight: bold;
+
+}
 #arrow:hover {
   opacity: 0.7;
   transform: scale(1.9);
