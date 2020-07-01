@@ -92,29 +92,28 @@ const menu = [
 ];
 
 const sectionCenter = document.querySelector(".section-center");
-const btnContainer = document.querySelector(".btn-container");
+const container = document.querySelector(".btn-container");
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function contentLoaded() {
   displayMenuItems(menu);
   displayMenuButtons();
 });
 
 function displayMenuItems(menuItems) {
-  let displayMenu = menuItems.map(function (item) {
+  let displayMenu = menuItems.map((item) => {
     return `<article class="menu-item">
-          <img src=${item.img} alt=${item.title} class="photo" />
-          <div class="item-info">
-            <header>
-              <h4>${item.title}</h4>
-              <h4 class="price">$${item.price}</h4>
-            </header>
-            <p class="item-text">
-              ${item.desc}
-            </p>
-          </div>
-        </article>`;
+    <img src=${item.img} class="photo" />
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">$${item.price}</h4>
+      </header>
+      <p class="item-text">
+        ${item.desc}
+      </p>
+    </div>
+  </article>`;
   });
-
   displayMenu = displayMenu.join("");
   sectionCenter.innerHTML = displayMenu;
 }
@@ -129,19 +128,17 @@ function displayMenuButtons() {
     },
     ["All"]
   );
-
-  const categoryBtns = categories
+  const categoryButtons = categories
     .map(function (category) {
-      return `<button type="button" class="filter-btn" data-id=${category}>
-          ${category}
-        </button>`;
+      return `<button class="filter-btn" type="button" data-id="${category}">
+    ${category}
+  </button>`;
     })
     .join("");
+  container.innerHTML = categoryButtons;
+  const filterButtons = container.querySelectorAll(".filter-btn");
 
-  btnContainer.innerHTML = categoryBtns;
-  const filterBtns = btnContainer.querySelectorAll(".filter-btn");
-
-  filterBtns.forEach(function (btn) {
+  filterButtons.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       const category = e.currentTarget.dataset.id;
       const menuCategory = menu.filter(function (menuItem) {
